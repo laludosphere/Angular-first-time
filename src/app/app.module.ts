@@ -9,6 +9,7 @@ import { AppComponent } from 'app/app.component';
 import { BaseModule } from 'app/base/base.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { ProductsComponent } from './products/products.component';
+import { DataViewModule } from 'primeng/dataview';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProductsComponent } from './products/products.component';
     BrowserAnimationsModule,
     SharedModule,
     BaseModule,
+    DataViewModule
   ], 
  
   providers: [
