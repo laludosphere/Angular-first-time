@@ -18,15 +18,20 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
-      // this.products = data.data;
-      // const options = Object.keys(data.data[0])
-      // const optionsString = options.filter(op => typeof data.data[0][op] === 'string')
-      // this.sortOptions = optionsString;
+      this.products = data["data"];
+      const options = Object.keys(data["data"][0])
+      const optionsString = options.filter(op => typeof data["data"][0][op] === 'string')
+      this.sortOptions = optionsString;
 
     })
   }
 
   onSearchInputChange() {
+    console.log(this.searchValue)
+    if (!this.searchValue) {
+      this.loadAllProducts();
+      return; // Sortez de la fonction car il n'est pas nécessaire de continuer
+  }
     if (this.searchValue) {
       if (this.sortKey) {
         // Si sortKey est défini, filtre uniquement sur les valeurs de la sortKey
@@ -42,22 +47,12 @@ export class ProductsComponent implements OnInit {
           )
         );
       }
-    } else {
-      // Si la valeur de recherche est vide, réinitialisez la liste des produits (chargez la liste complète)
-      this.loadProducts();
-    }
-  }
-  
-
-  onSortChange(event){
-    if(event.value === this.sortKey){
-      
-    }
+    } 
   }
 
-  loadProducts() {
+  loadAllProducts() {
     this.productService.getProducts().subscribe(data => {
-      // this.products = data.data;
-    });
+      return this.products = data["data"];
+    })
   }
 }
