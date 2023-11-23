@@ -1,1 +1,66 @@
-<p>products-admin works!</p>
+<p-button  (click)="showDialog()" icon="pi pi-plus"></p-button>
+
+<p-dialog header="Header" [(visible)]="visible" [style]="{width: '50vw'}">
+    <form >
+        <div>
+          <label for="code">Product Code:</label>
+          <input type="text" id="code"   required>
+        </div>
+        <div>
+          <label for="name">Product Name:</label>
+          <input type="text" id="name"  required>
+        </div>
+        <div>
+          <label for="description">Product Description:</label>
+          <textarea id="description" required></textarea>
+        </div>
+        <div>
+          <label for="price">Product Price:</label>
+          <input type="number" id="price"  required>
+        </div>
+        <div>
+          <label for="quantity">Product Quantity:</label>
+          <input type="number" id="quantity"  required>
+        </div>
+        <div>
+          <label for="inventoryStatus">Inventory Status:</label>
+          <input type="text" id="inventoryStatus"  required>
+        </div>
+        <div>
+          <label for="category">Product Category:</label>
+          <input type="text" id="category"  required>
+        </div>
+        <div>
+            <p-button label="Ajouter un Produit" (click)="addProduct()" [disabled]="false"></p-button>
+        </div>
+      </form>
+</p-dialog>
+
+<p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Code</th>
+            <th>id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>{{ product.code }}</td>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>
+                <p-button  (click)="showDialog()" (click)="updateProduct(product)" icon="pi pi-pencil"></p-button>
+                <p-button icon="pi pi-trash" (click)="deleteProduct(product)" severity="danger"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+

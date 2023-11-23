@@ -18,10 +18,10 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
-      this.products = data.data;
-      const options = Object.keys(data.data[0])
-      const optionsString = options.filter(op => typeof data.data[0][op] === 'string')
-      this.sortOptions = optionsString;
+      // this.products = data.data;
+      // const options = Object.keys(data.data[0])
+      // const optionsString = options.filter(op => typeof data.data[0][op] === 'string')
+      // this.sortOptions = optionsString;
 
     })
   }
@@ -57,7 +57,7 @@ export class ProductsComponent implements OnInit {
 
   loadProducts() {
     this.productService.getProducts().subscribe(data => {
-      this.products = data.data;
+      // this.products = data.data;
     });
   }
 }

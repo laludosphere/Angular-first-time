@@ -9,12 +9,18 @@ import { AppComponent } from 'app/app.component';
 import { BaseModule } from 'app/base/base.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { ProductsComponent } from './products/products.component';
+import { ProductsAdminComponent } from './admin/products-admin/products-admin.component';
 import { DataViewModule } from 'primeng/dataview';
+import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    ProductsComponent
+    ProductsComponent, 
+    ProductsAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +29,11 @@ import { DataViewModule } from 'primeng/dataview';
     BrowserAnimationsModule,
     SharedModule,
     BaseModule,
-    DataViewModule
+    DataViewModule,
+    TableModule,
+    FormsModule,
+    DialogModule,
+    ButtonModule
   ], 
  
   providers: [
